@@ -138,7 +138,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
 .prose ul { padding-inline-start: 1.2rem; color: var(--muted); }
 .prose li { margin: 0.6rem 0; }
 .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem; color: var(--muted); font-family: var(--mono); font-size: 0.72rem; }
-.breadcrumbs span { color: var(--line-strong); }
+.breadcrumbs span { color: var(--muted); }
 .privacy-summary { margin: 2rem 0; padding: 1.25rem 1.35rem; border-inline-start: 3px solid var(--accent); background: rgba(165, 230, 217, 0.06); color: var(--text); }
 .policy-meta { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.4rem 0 0; color: var(--muted); font-size: 0.9rem; }
 .policy-meta strong { color: var(--text); }
