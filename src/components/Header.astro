@@ -1,0 +1,32 @@
+---
+import site from "../data/site.json";
+const { lang = "en", current = "" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const isArabic = lang === "ar";
+const links = isArabic
+  ? [{ href: "ar/", label: "الرئيسية", key: "home" }, { href: "ar/products/", label: "المنتجات", key: "products" }, { href: "ar/capabilities/", label: "القدرات", key: "capabilities" }, { href: "ar/about/", label: "عن GK", key: "about" }]
+  : [{ href: "", label: "Home", key: "home" }, { href: "products/", label: "Products", key: "products" }, { href: "capabilities/", label: "Capabilities", key: "capabilities" }, { href: "about/", label: "About", key: "about" }];
+const languageHref = isArabic ? `${base}` : `${base}ar/`;
+const languageLabel = isArabic ? "EN" : "عربي";
+---
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href={base} aria-label={site.name}>
+      <span class="brand-mark" aria-hidden="true">GK</span>
+      <span class="brand-copy">{site.name}<small>{site.descriptor}</small></span>
+    </a>
+    <nav class="nav-links" aria-label={isArabic ? "التنقل الرئيسي" : "Main navigation"}>
+      {links.map((link) => <a href={`${base}${link.href}`} aria-current={current === link.key ? "page" : undefined}>{link.label}</a>)}
+      <a href={`${base}${isArabic ? "ar/privacy/" : "privacy/"}`} aria-current={current === "privacy" ? "page" : undefined}>{isArabic ? "الخصوصية" : "Privacy"}</a>
+      <a class="language-link" href={languageHref} lang={isArabic ? "en" : "ar"} hreflang={isArabic ? "en" : "ar"}>{languageLabel}</a>
+    </nav>
+    <details class="mobile-nav">
+      <summary aria-label={isArabic ? "فتح القائمة" : "Open menu"}>☰</summary>
+      <nav aria-label={isArabic ? "التنقل على الهاتف" : "Mobile navigation"}>
+        {links.map((link) => <a href={`${base}${link.href}`} aria-current={current === link.key ? "page" : undefined}>{link.label}</a>)}
+        <a href={`${base}${isArabic ? "ar/privacy/" : "privacy/"}`}>{isArabic ? "الخصوصية" : "Privacy"}</a>
+        <a href={languageHref} lang={isArabic ? "en" : "ar"} hreflang={isArabic ? "en" : "ar"}>{isArabic ? "English" : "العربية"}</a>
+      </nav>
+    </details>
+  </div>
+</header>

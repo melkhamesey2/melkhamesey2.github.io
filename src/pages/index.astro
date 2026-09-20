@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ProductSignal from "../components/ProductSignal.astro";
+import products from "../data/products.json";
+import site from "../data/site.json";
+const publicProducts = products.filter((product) => product.visibility === "public").sort((a, b) => a.sortOrder - b.sortOrder);
+const base = import.meta.env.BASE_URL;
+const principles = [
+  ["Performance", "Keep the experience close to the real bottleneck."],
+  ["Security", "Make trust boundaries explicit and reviewable."],
+  ["Privacy", "Prefer local processing and minimal data movement."],
+  ["Maintainability", "Build systems that remain understandable after launch."],
+  ["Cross-platform", "Choose the right boundary for desktop, mobile and web."],
+  ["Evidence", "Ship with reproducible checks, not optimistic labels."]
+];
+---
+<BaseLayout title={`${site.name} — ${site.tagline}`} description={site.description} canonicalPath="/" alternatePath="ar/" current="home" jsonLd={{"@context":"https://schema.org","@type":"Organization","name":site.name,"url":"https://melkhamesey2.github.io/","description":site.description,"sameAs":[site.github,site.itch,site.linkedin]}}>
+  <main id="main-content">
+    <section class="hero"><div class="shell hero-grid"><div><p class="eyebrow">{site.name} · {site.descriptor}</p><h1>{site.tagline}</h1><p class="lede">{site.description}</p><div class="hero-actions"><a class="button primary" href={`${base}products/`}>Explore products ↗</a><a class="button ghost" href={`${base}capabilities/`}>How we build</a></div><p class="hero-note"><span class="status-line"><span class="status-dot" aria-hidden="true"></span>Independent studio</span><span>·</span><span>Shipping with care</span></p></div><ProductSignal /></div></section>
+    <section class="section section-tint"><div class="shell"><div class="section-heading"><div><p class="eyebrow">01 / Featured work</p><h2>Products with a point of view.</h2></div><p>Public releases are the visible edge of a wider product engineering practice. Each one earns its place through real use, clear boundaries and a deliberate release path.</p></div><div class="product-grid">{publicProducts.map((product) => <ProductCard product={product} />)}</div></div></section>
+    <section class="section"><div class="shell"><div class="section-heading"><div><p class="eyebrow">02 / What we build</p><h2>From first constraint to shipped product.</h2></div><p>GK DEVELOPMENT works across the layers that make software useful: product definition, interface design, runtime behavior, release packaging and operational evidence.</p></div><div class="grid-3"><article class="card"><p class="card-kicker">Software</p><h3>Desktop, mobile & web</h3><p>Focused applications and cross-platform experiences built around the people who use them.</p></article><article class="card"><p class="card-kicker">Systems</p><h3>Business & automation</h3><p>Operational systems, data flows and automation that keep state visible and failure bounded.</p></article><article class="card"><p class="card-kicker">Interactive</p><h3>Games & digital products</h3><p>Playable systems and digital products where the details of feel, performance and iteration matter.</p></article></div></div></section>
+    <section class="section section-tint"><div class="shell"><div class="section-heading"><div><p class="eyebrow">03 / Engineering principles</p><h2>Quietly rigorous where it counts.</h2></div><p>These are working principles, not a claim of perfection. They shape how products are scoped, built, checked and kept maintainable.</p></div><ul class="principle-list">{principles.map(([name, body]) => <li><strong>{name}</strong>{body}</li>)}</ul></div></section>
+    <section class="section"><div class="shell product-callout"><div><p class="eyebrow">04 / Privacy by design</p><h2>Less collection. More control.</h2><p class="lede">The hub has no analytics, ad trackers, cookies for profiling or background data collection. Product privacy pages describe the behavior of each release with the same care.</p></div><a class="button ghost" href={`${base}privacy/`}>Read privacy approach ↗</a></div></section>
+  </main>
+</BaseLayout>

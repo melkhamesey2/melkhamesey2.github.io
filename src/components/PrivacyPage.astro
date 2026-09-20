@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { privacyPolicy } from "../data/privacy";
+const { lang = "en", slug = "gk-sound-system" } = Astro.props;
+const policy = privacyPolicy[lang as "en" | "ar"];
+const isArabic = lang === "ar";
+const legacyUrl = "https://github.com/melkhamesey2/melkhamesey2/blob/main/privacy/GK_SOUND_SYSTEM_PRIVACY_POLICY.md";
+---
+<BaseLayout lang={lang} current="privacy" title={policy.title} description={policy.summary} canonicalPath={isArabic ? `ar/privacy/${slug}/` : `privacy/${slug}/`} alternatePath={isArabic ? `privacy/${slug}/` : `ar/privacy/${slug}/`} jsonLd={{"@context":"https://schema.org","@type":"WebPage","name":policy.title,"description":policy.summary}}>
+  <main id="main-content">
+    <section class="page-hero"><div class="shell"><div class="breadcrumbs"><a href={isArabic ? "/ar/" : "/"}>{isArabic ? "الرئيسية" : "Home"}</a><span>/</span><span>{isArabic ? "الخصوصية" : "Privacy"}</span></div><h1>{policy.title}</h1><div class="policy-meta"><span><strong>{isArabic ? "التطبيق" : "Application"}:</strong> {policy.application}</span><span><strong>{isArabic ? "المطور" : "Developer"}:</strong> {policy.developer}</span><span><strong>{isArabic ? "آخر تحديث" : "Last updated"}:</strong> {policy.updated}</span></div></div></section>
+    <section class="section"><div class="shell prose"><div class="privacy-summary">{policy.summary}</div>{isArabic && <div class="note">هذه ترجمة عربية للراحة. تبقى النسخة الإنجليزية المنشورة على الرابط القديم هي المرجع القانوني الحالي.</div>}{policy.sections.map((section) => <section><h2>{section.heading}</h2>{section.body.map((paragraph) => <p>{paragraph}</p>)}</section>)}<p><a class="link-arrow" href={legacyUrl} target="_blank" rel="noopener noreferrer">{isArabic ? "عرض ملف الخصوصية القديم على GitHub" : "View the stable legacy privacy file on GitHub"}</a></p></div></section>
+  </main>
+</BaseLayout>

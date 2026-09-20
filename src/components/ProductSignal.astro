@@ -1,0 +1,12 @@
+---
+const { lang = "en" } = Astro.props;
+const isArabic = lang === "ar";
+const heights = ["32%", "62%", "48%", "76%", "54%", "88%", "68%", "42%", "72%", "58%", "79%", "51%", "64%", "37%", "70%", "47%"];
+---
+<div class="signal-frame" aria-label={isArabic ? "تصور واجهة تحكم صوتية" : "Audio control interface visual"}>
+  <div class="signal-top"><span class="signal-title">GK SOUND SYSTEM</span><span>{isArabic ? "محلي · Windows" : "LOCAL · WINDOWS"}</span></div>
+  <div class="signal-body">
+    <div class="signal-display"><div><span>{isArabic ? "الملف الصوتي" : "SOUND PROFILE"}</span><strong>CLARITY</strong></div><div class="eq-bars" aria-hidden="true">{heights.map((_, index) => <i class={`eq-bar eq-${index + 1}`} />)}</div></div>
+    <div class="signal-footer"><span>20-BAND EQ</span><span>WASAPI / DSP</span><span>{isArabic ? "بدون سحابة" : "NO CLOUD"}</span></div>
+  </div>
+</div>

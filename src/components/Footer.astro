@@ -1,0 +1,35 @@
+---
+import site from "../data/site.json";
+const { lang = "en" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const isArabic = lang === "ar";
+---
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href={base}><span class="brand-mark" aria-hidden="true">GK</span><span class="brand-copy">{site.name}<small>{site.descriptor}</small></span></a>
+        <p class="lede footer-lede">{isArabic ? "هندسة منتجات مستقلة للبرمجيات والألعاب والأنظمة." : site.description}</p>
+      </div>
+      <div>
+        <p class="footer-heading">{isArabic ? "استكشف" : "Explore"}</p>
+        <nav class="footer-links" aria-label={isArabic ? "روابط الاستكشاف" : "Explore links"}>
+          <a href={`${base}${isArabic ? "ar/products/" : "products/"}`}>{isArabic ? "المنتجات" : "Products"}</a>
+          <a href={`${base}${isArabic ? "ar/capabilities/" : "capabilities/"}`}>{isArabic ? "القدرات" : "Capabilities"}</a>
+          <a href={`${base}${isArabic ? "ar/security/" : "security/"}`}>{isArabic ? "الأمان والخصوصية" : "Security & privacy"}</a>
+          <a href={`${base}${isArabic ? "ar/privacy/" : "privacy/"}`}>{isArabic ? "الخصوصية" : "Privacy"}</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-heading">{isArabic ? "حضور عام" : "Public presence"}</p>
+        <nav class="footer-links" aria-label={isArabic ? "حضور GK العام" : "GK public presence"}>
+          <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href={site.itch} target="_blank" rel="noopener noreferrer">itch.io ↗</a>
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href={`mailto:${site.contactEmail}`}>{isArabic ? "تواصل عبر البريد" : "Email"}</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.name}</span><span>{isArabic ? "بدون تحليلات أو متتبعات" : "No analytics. No trackers."}</span></div>
+  </div>
+</footer>

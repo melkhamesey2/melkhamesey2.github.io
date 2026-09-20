@@ -1,0 +1,5 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Page not found" description="The requested GK DEVELOPMENT page was not found." noindex canonicalPath="404.html" alternatePath="404.html"><main id="main-content"><section class="page-hero"><div class="shell"><p class="eyebrow">404 / Not found</p><h1>That route is not here.</h1><p class="lede">The page may have moved, or the link may be from a product that is not public yet.</p><div class="hero-actions"><a class="button primary" href={base}>Return home</a><a class="button ghost" href={`${base}products/`}>Browse products</a></div></div></section></main></BaseLayout>

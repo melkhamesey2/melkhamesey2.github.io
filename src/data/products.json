@@ -1,0 +1,46 @@
+[
+  {
+    "id": "gk-sound-system",
+    "name": "GK SOUND SYSTEM",
+    "slug": "gk-sound-system",
+    "shortDescription": "A local-first Windows media player with deep DSP control and a focused playback experience.",
+    "fullDescription": "GK SOUND SYSTEM is a Windows media player designed around local playback, practical audio control and a private-by-default workflow. It combines everyday library features with a 20-band equalizer and DSP tools for listeners who want more control without handing their media to a cloud service.",
+    "status": "released",
+    "visibility": "public",
+    "platforms": ["Windows"],
+    "category": "Media software",
+    "version": null,
+    "price": null,
+    "currency": null,
+    "pricingModel": "Paid download",
+    "heroImage": null,
+    "logo": null,
+    "screenshots": [],
+    "features": [
+      "Windows media player with offline and local-first operation",
+      "20-band EQ and DSP controls for bass, treble, clarity, stereo widening, AGC and reverb",
+      "True gapless playback, playlists, favorites, lyrics, Mini Player and Theater/full-screen modes",
+      "MP3, FLAC, WAV, AAC/M4A, OGG, Opus, WMA, AIFF and MP4 playback",
+      "Video playback routed through the same DSP-focused experience",
+      "WASAPI support and 22 interface languages"
+    ],
+    "technologies": ["Windows", "WASAPI", "DSP", "Local-first media"],
+    "storeLinks": [
+      {
+        "name": "itch.io",
+        "url": "https://gk-development.itch.io/gk-sound-system",
+        "status": "live",
+        "primary": true
+      }
+    ],
+    "website": null,
+    "privacyUrl": "/privacy/gk-sound-system/",
+    "supportUrl": "/support/",
+    "releaseDate": null,
+    "lastUpdated": null,
+    "featured": true,
+    "sortOrder": 1,
+    "seoTitle": "GK SOUND SYSTEM — Local-first Windows media player",
+    "seoDescription": "Explore GK SOUND SYSTEM, a local-first Windows media player with 20-band EQ, DSP controls, gapless playback and broad media format support."
+  }
+]

@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import products from "../../data/products.json";
+const publicProducts = products.filter((product) => product.visibility === "public").sort((a, b) => a.sortOrder - b.sortOrder);
+---
+<BaseLayout title="Products" description="Public GK DEVELOPMENT products and releases." canonicalPath="products/" alternatePath="ar/products/" current="products">
+  <main id="main-content"><section class="page-hero"><div class="shell"><p class="eyebrow">GK DEVELOPMENT / Products</p><h1>Products that ship.</h1><p class="lede">A small public catalog, kept honest. Products appear here only when their public status and distribution path are clear.</p></div></section><section class="section"><div class="shell"><div class="product-grid">{publicProducts.map((product) => <ProductCard product={product} />)}</div></div></section></main>
+</BaseLayout>

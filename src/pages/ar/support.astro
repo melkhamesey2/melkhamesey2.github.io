@@ -1,0 +1,6 @@
+---
+import InfoPage from "../../components/InfoPage.astro";
+import site from "../../data/site.json";
+const sections = [{ heading: "قنوات دعم عامة", body: ["لأسئلة المنتجات، استخدم القناة العامة الرسمية المرتبطة بالمنتج. يشير GK SOUND SYSTEM حاليًا إلى صفحته العامة على itch.io للتوزيع وسياق الدعم."] }, { heading: "لا يوجد نموذج يجمع البيانات", body: ["لا يدير الموقع نموذج تواصل ولا يجمع الرسائل في خلفية. اختر قناة عامة بوعي وشارك المعلومات اللازمة للسؤال فقط."] }];
+---
+<InfoPage lang="ar" current="support" title="الدعم" description="قنوات الدعم العامة لمنتجات GK DEVELOPMENT." intro="مسار واضح إلى قناة المنتج العامة، دون نموذج يجمع تفاصيلك في الخلفية." sections={sections} note={`البريد العام: ${site.contactEmail}. استخدمه فقط عندما يكون التواصل المباشر مناسبًا.`} />

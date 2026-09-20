@@ -1,0 +1,6 @@
+---
+import InfoPage from "../components/InfoPage.astro";
+import site from "../data/site.json";
+const sections = [{ heading: "Public support channels", body: ["For product questions, use the official public channel attached to the product. GK SOUND SYSTEM currently points to its public itch.io page for distribution and support context."] }, { heading: "No data-collecting contact form", body: ["This site does not operate a contact form or collect messages in a backend. Choose a public channel deliberately and share only the information needed for the question."] }];
+---
+<InfoPage current="support" title="Support" description="Public support channels for GK DEVELOPMENT products." intro="A clear path to the public product channel, without a form that quietly collects your details." sections={sections} note={`Public email: ${site.contactEmail}. Use it only when direct contact is appropriate.`} />

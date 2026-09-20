@@ -1,0 +1,9 @@
+{
+  "name": "GK DEVELOPMENT — Product & Developer Hub",
+  "short_name": "GK DEVELOPMENT",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#071016",
+  "theme_color": "#071016",
+  "icons": [{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml"}]
+}

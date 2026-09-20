@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProductCard from "../../../components/ProductCard.astro";
+import products from "../../../data/products.json";
+const publicProducts = products.filter((product) => product.visibility === "public").sort((a, b) => a.sortOrder - b.sortOrder);
+---
+<BaseLayout lang="ar" title="المنتجات" description="المنتجات والإصدارات العامة من GK DEVELOPMENT." canonicalPath="ar/products/" alternatePath="products/" current="products">
+  <main id="main-content"><section class="page-hero"><div class="shell"><p class="eyebrow">GK DEVELOPMENT / المنتجات</p><h1>منتجات قابلة للشحن.</h1><p class="lede">كتالوج عام صغير ومحافظ. يظهر المنتج هنا فقط عندما تكون حالته العامة ومسار توزيعه واضحين.</p></div></section><section class="section"><div class="shell"><div class="product-grid">{publicProducts.map((product) => <ProductCard product={product} lang="ar" />)}</div></div></section></main>
+</BaseLayout>
