@@ -1,9 +1,22 @@
 # Issues found
 
-| Severity | Issue | Impact | Recommended fix | Scope |
+## Open / informational
+
+| Severity | Issue | Impact | Recommended action | Status |
 | --- | --- | --- | --- | --- |
-| Warning | GitHub CLI authentication is expired | Repository creation and push cannot be completed safely | Re-authenticate manually, then create `melkhamesey2.github.io` and review the first Pages run | In scope, pending user authentication |
-| Warning | GitHub Pages Enforce HTTPS not yet verified | HTTPS readiness cannot be claimed before the repository exists | Enable and verify Enforce HTTPS in repository Pages settings | In scope, post-creation |
-| Warning | Lighthouse was not installed or available | Numeric performance/accessibility/SEO scores are not available | Run Lighthouse against the production build or first live Pages URL | In scope, post-auth QA |
-| Warning | Full 10-size responsive matrix was not runtime-captured | Exact clipping behavior at every requested size is not independently evidenced | Use a browser runner with explicit viewport control and record screenshots/results | In scope, post-auth QA |
-| Info | Store privacy URL migration remains unchanged | Existing store links continue to point at the stable legacy GitHub source | Review migration separately after live-site verification | Out of current deployment scope |
+| Info | GitHub Actions `ubuntu-latest` will migrate to Ubuntu 26 beginning 2026-10-19 | No current impact; current build and deploy jobs pass | Re-run and review the workflow after the runner-image migration | MONITOR |
+| Info | Store privacy URL migration remains unchanged | Existing store privacy links continue using the stable legacy GitHub source | Review migration separately only after deciding to replace store-facing URLs | DEFERRED BY DESIGN |
+| Info | Product release date is intentionally unpublished | No user-facing correctness impact | Add only when independently verified | INTENTIONAL |
+
+## Resolved during final deployment QA
+
+- GitHub CLI authentication: resolved; authenticated account verified.
+- GitHub Pages repository creation: resolved.
+- Pages source/build type: resolved; GitHub Actions workflow configured.
+- HTTPS enforcement: resolved and verified.
+- Lighthouse availability: resolved with a temporary, non-project Lighthouse execution.
+- Exact responsive matrix: resolved with 40 runtime layout checks plus targeted lazy-image activation checks.
+- GitHub Actions Node 20 deprecation warnings: resolved by refreshing pinned official action SHAs.
+- Product breadcrumb contrast: resolved.
+- Brand accessible-name mismatch: resolved.
+- OG/Twitter assets: verified at the actual live `/og/` paths with HTTP 200.
