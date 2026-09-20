@@ -26,6 +26,9 @@ export interface Product {
   heroImage: string | null;
   logo: string | null;
   screenshots: string[];
+  screenshotDimensions: { width: number; height: number }[];
+  formats: string[];
+  interfaceLanguages: number;
   features: string[];
   technologies: string[];
   storeLinks: StoreLink[];

@@ -21,11 +21,15 @@ The product templates automatically generate the English and Arabic product rout
 
 ## Add a store or screenshot
 
-Add a `storeLinks` record with `name`, HTTPS `url`, `status` and `primary`. Never represent a `pending` link as live. Add official screenshots to the product record and `public/` only after the asset is provided and checked; do not use generated or stock imagery.
+Add a `storeLinks` record with `name`, HTTPS `url`, `status` and `primary`. Never represent a `pending` link as live. Add official screenshots to the product record and `public/` only after the asset is provided and checked; do not use generated or stock imagery. Keep `heroImage`, `logo`, `screenshots` and `screenshotDimensions` aligned, and use meaningful alt text in the shared product template.
+
+The GK SOUND SYSTEM record includes `version`, `price`, `currency`, `formats` and `interfaceLanguages` from verified product material. Its `lastUpdated` value is the date of the product-record refresh, not a release date; keep `releaseDate` as `null` unless a release date is independently verified.
 
 ## CTA and SEO
 
 The primary CTA is derived from `storeLinks[0]`. Change it by changing the primary live store record. Update `seoTitle` and `seoDescription` in the same product record. Keep titles and descriptions unique.
+
+Social preview links are generated from the central site/product layout. Update local files in `public/og/` when the brand or product preview needs to change; do not introduce remote image dependencies.
 
 ## Add a release
 

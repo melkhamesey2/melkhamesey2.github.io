@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GK DEVELOPMENT — Product and Developer Hub</title>
+  <desc id="desc">Software, games, systems and products by GK DEVELOPMENT.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071016"/><stop offset="1" stop-color="#12333a"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6fd1c0"/><stop offset="1" stop-color="#a5e6d9"/></linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#a5e6d9" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1020" cy="100" r="180" fill="none" stroke="#a5e6d9" stroke-opacity=".18"/>
+  <circle cx="1020" cy="100" r="230" fill="none" stroke="#a5e6d9" stroke-opacity=".08"/>
+  <rect x="72" y="72" width="78" height="78" rx="20" fill="#0c171e" stroke="#a5e6d9" stroke-width="2"/>
+  <text x="111" y="122" fill="#a5e6d9" font-family="Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">GK</text>
+  <text x="72" y="250" fill="#a5e6d9" font-family="Arial, sans-serif" font-size="24" letter-spacing="5">GK DEVELOPMENT</text>
+  <text x="72" y="335" fill="#f1f5f0" font-family="Arial, sans-serif" font-size="68" font-weight="700">Software. Games.</text>
+  <text x="72" y="410" fill="#f1f5f0" font-family="Arial, sans-serif" font-size="68" font-weight="700">Systems. Products.</text>
+  <rect x="74" y="478" width="430" height="3" fill="url(#accent)"/>
+  <text x="72" y="532" fill="#98aaa9" font-family="Arial, sans-serif" font-size="22">Independent product engineering</text>
+  <text x="1128" y="562" fill="#6fd1c0" font-family="Consolas, monospace" font-size="18" text-anchor="end">PRODUCT / DEVELOPER HUB</text>
+</svg>

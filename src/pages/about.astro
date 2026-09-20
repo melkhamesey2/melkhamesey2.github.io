@@ -1,5 +1,7 @@
 ---
 import InfoPage from "../components/InfoPage.astro";
+import site from "../data/site.json";
 const sections = [{ heading: "A general-purpose development identity", body: ["GK DEVELOPMENT is an independent product engineering identity for software, games, systems and digital products. The name is intentionally broader than one app, one engine or one platform."] }, { heading: "Product work stays grounded", body: ["The public boundary is simple: describe what is available, link to what is verifiable and keep private source, credentials and operational details out of the site."] }, { heading: "A small public surface", body: ["The hub is designed to grow as products earn a public release. Unreleased or internal work remains hidden until its status is clear."] }];
+const presenceLinks = [{ label: "GitHub", url: site.github }, { label: "Medium", url: site.medium }, { label: "Reddit", url: site.reddit }, { label: "itch.io", url: site.itch }, { label: "LinkedIn", url: site.linkedin }].filter((link) => Boolean(link.url));
 ---
-<InfoPage current="about" title="GK DEVELOPMENT" description="About GK DEVELOPMENT — an independent product engineering identity." intro="An independent product engineering identity for software, games, systems and digital products." sections={sections} />
+<InfoPage current="about" title="GK DEVELOPMENT" description="About GK DEVELOPMENT — an independent product engineering identity." intro="An independent product engineering identity for software, games, systems and digital products." sections={sections} presenceLinks={presenceLinks} />

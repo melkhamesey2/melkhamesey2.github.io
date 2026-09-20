@@ -3,6 +3,13 @@ import site from "../data/site.json";
 const { lang = "en" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const isArabic = lang === "ar";
+const publicLinks = [
+  { label: "GitHub", url: site.github },
+  { label: "Medium", url: site.medium },
+  { label: "Reddit", url: site.reddit },
+  { label: "itch.io", url: site.itch },
+  { label: "LinkedIn", url: site.linkedin }
+].filter((link) => Boolean(link.url));
 ---
 <footer class="site-footer">
   <div class="shell">
@@ -23,9 +30,7 @@ const isArabic = lang === "ar";
       <div>
         <p class="footer-heading">{isArabic ? "حضور عام" : "Public presence"}</p>
         <nav class="footer-links" aria-label={isArabic ? "حضور GK العام" : "GK public presence"}>
-          <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href={site.itch} target="_blank" rel="noopener noreferrer">itch.io ↗</a>
-          <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          {publicLinks.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}
           <a href={`mailto:${site.contactEmail}`}>{isArabic ? "تواصل عبر البريد" : "Email"}</a>
         </nav>
       </div>

@@ -19,6 +19,11 @@ function walk(dir) {
 const htmlFiles = existsSync(dist) ? walk(dist).filter((file) => file.endsWith(".html")) : [];
 const titles = new Map();
 const canonicals = new Map();
+const localTarget = (value) => {
+  const pathname = value.startsWith("https://melkhamesey2.github.io") ? new URL(value).pathname : value;
+  const normalized = pathname.split("#")[0].split("?")[0].replace(/^\//, "");
+  return normalized === "" ? join(dist, "index.html") : normalized.endsWith("/") ? join(dist, normalized, "index.html") : join(dist, normalized);
+};
 for (const file of htmlFiles) {
   const html = readFileSync(file, "utf8");
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
@@ -37,6 +42,15 @@ for (const file of htmlFiles) {
     const candidate = normalized === "" ? join(dist, "index.html") : normalized.endsWith("/") ? join(dist, normalized, "index.html") : join(dist, normalized);
     if (!existsSync(candidate)) errors.push(`${file}: broken internal link ${href}`);
   }
+  for (const match of html.matchAll(/src="([^"]+)"/g)) {
+    const src = match[1];
+    if (!src || src.startsWith("data:") || /^https:\/\//i.test(src)) continue;
+    if (!existsSync(localTarget(src))) errors.push(`${file}: broken local asset ${src}`);
+  }
+  const ogImage = html.match(/property="og:image" content="([^"]+)"/i)?.[1];
+  const twitterImage = html.match(/name="twitter:image" content="([^"]+)"/i)?.[1];
+  if (ogImage && !existsSync(localTarget(ogImage))) errors.push(`${file}: missing OG image ${ogImage}`);
+  if (twitterImage && !existsSync(localTarget(twitterImage))) errors.push(`${file}: missing Twitter image ${twitterImage}`);
 }
 for (const [title, count] of titles) if (count > 1) errors.push(`duplicate title: ${title}`);
 for (const [canonical, count] of canonicals) if (count > 1) errors.push(`duplicate canonical: ${canonical}`);
@@ -45,6 +59,13 @@ const sitemap = existsSync(join(dist, "sitemap.xml")) ? readFileSync(join(dist, 
 if (!sitemap.includes("<urlset") || !sitemap.includes("https://melkhamesey2.github.io/")) errors.push("sitemap.xml is invalid or empty");
 const robots = existsSync(join(dist, "robots.txt")) ? readFileSync(join(dist, "robots.txt"), "utf8") : "";
 if (!robots.includes("Sitemap: https://melkhamesey2.github.io/sitemap.xml")) errors.push("robots.txt is missing the canonical sitemap");
+for (const route of ["index.html", "ar/index.html", "products/gk-sound-system/index.html", "ar/products/gk-sound-system/index.html"]) {
+  const file = join(dist, route);
+  if (existsSync(file)) {
+    const html = readFileSync(file, "utf8");
+    if (!html.includes('property="og:image"') || !html.includes('name="twitter:image"')) errors.push(`${route}: missing social preview metadata`);
+  }
+}
 
 if (errors.length) {
   console.error("Build validation failed:");

@@ -3,13 +3,14 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import site from "../data/site.json";
-const { title, description = site.description, lang = "en", current = "", canonicalPath = "/", alternatePath = "/", noindex = false, jsonLd } = Astro.props;
+const { title, description = site.description, lang = "en", current = "", canonicalPath = "/", alternatePath = "/", noindex = false, socialImage, jsonLd } = Astro.props;
 const isArabic = lang === "ar";
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`, "https://melkhamesey2.github.io").toString();
 const alternate = new URL(alternatePath.startsWith("/") ? alternatePath : `/${alternatePath}`, "https://melkhamesey2.github.io").toString();
 const csp = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests";
-const structuredData = jsonLd ?? { "@context": "https://schema.org", "@type": "Organization", name: site.name, url: "https://melkhamesey2.github.io", sameAs: [site.github, site.itch, site.linkedin] };
+const structuredData = jsonLd ?? { "@context": "https://schema.org", "@type": "Organization", name: site.name, url: "https://melkhamesey2.github.io", sameAs: [site.github, site.itch, site.medium, site.reddit, site.linkedin] };
+const absoluteSocialImage = socialImage ? new URL(socialImage.startsWith("/") ? socialImage : `/${socialImage}`, "https://melkhamesey2.github.io").toString() : undefined;
 ---
 <!doctype html>
 <html lang={lang} dir={isArabic ? "rtl" : "ltr"}>
@@ -28,9 +29,11 @@ const structuredData = jsonLd ?? { "@context": "https://schema.org", "@type": "O
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    {absoluteSocialImage && <meta property="og:image" content={absoluteSocialImage} />}
+    <meta name="twitter:card" content={absoluteSocialImage ? "summary_large_image" : "summary"} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {absoluteSocialImage && <meta name="twitter:image" content={absoluteSocialImage} />}
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="manifest" href={`${base}manifest.webmanifest`} />
     <title>{title} · {site.name}</title>

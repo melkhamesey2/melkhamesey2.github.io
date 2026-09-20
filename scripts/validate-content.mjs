@@ -5,11 +5,11 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const products = JSON.parse(readFileSync(join(root, "src", "data", "products.json"), "utf8"));
 const site = JSON.parse(readFileSync(join(root, "src", "data", "site.json"), "utf8"));
-const required = ["id", "name", "slug", "shortDescription", "fullDescription", "status", "visibility", "platforms", "category", "version", "price", "currency", "pricingModel", "heroImage", "logo", "screenshots", "features", "technologies", "storeLinks", "website", "privacyUrl", "supportUrl", "releaseDate", "lastUpdated", "featured", "sortOrder", "seoTitle", "seoDescription"];
+const required = ["id", "name", "slug", "shortDescription", "fullDescription", "status", "visibility", "platforms", "category", "version", "price", "currency", "pricingModel", "heroImage", "logo", "screenshots", "screenshotDimensions", "formats", "interfaceLanguages", "features", "technologies", "storeLinks", "website", "privacyUrl", "supportUrl", "releaseDate", "lastUpdated", "featured", "sortOrder", "seoTitle", "seoDescription"];
 const errors = [];
 const seenSlugs = new Set();
 
-if (!site.name || !site.github || !site.itch || !site.contactEmail) errors.push("site.json is missing a required public configuration value");
+if (!site.name || !site.github || !site.itch || !site.medium || !site.reddit || !site.contactEmail) errors.push("site.json is missing a required public configuration value");
 if (!existsSync(join(root, "public", "legacy-privacy", "GK_SOUND_SYSTEM_PRIVACY_POLICY.md"))) errors.push("legacy privacy mirror is missing");
 
 for (const product of products) {
@@ -17,6 +17,9 @@ for (const product of products) {
   if (seenSlugs.has(product.slug)) errors.push(`duplicate product slug: ${product.slug}`);
   seenSlugs.add(product.slug);
   if (product.visibility === "public" && product.status === "hidden") errors.push(`${product.slug}: hidden product cannot be public`);
+  for (const asset of [product.heroImage, product.logo, ...(product.screenshots ?? [])].filter(Boolean)) {
+    if (!existsSync(join(root, "public", asset.replace(/^\//, "")))) errors.push(`${product.slug}: missing local asset ${asset}`);
+  }
   for (const link of product.storeLinks ?? []) {
     if (!/^https:\/\//.test(link.url)) errors.push(`${product.slug}: store link must use HTTPS: ${link.name}`);
     if (link.status === "pending" && link.primary) errors.push(`${product.slug}: pending store link cannot be primary`);

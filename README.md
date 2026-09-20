@@ -6,7 +6,7 @@ Static English/Arabic product hub for GK DEVELOPMENT. It is designed for the ded
 
 - Astro static output
 - TypeScript strict configuration
-- Local CSS and SVG only
+- Local CSS, SVG and WebP assets only
 - JSON product records with build-time validation
 - GitHub Pages Actions deployment from `main` only
 
@@ -55,3 +55,5 @@ The site has no backend, no authentication, no analytics, no trackers and no con
 ## GitHub Pages deployment
 
 Pull requests run build and validation only. A push to `main` is the only deployment trigger. Repository creation, Pages settings and the first publish are controlled separately from local build work.
+
+For the first publish, create the dedicated repository `melkhamesey2/melkhamesey2.github.io`, then open **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source, and review the workflow run after the first push to `main`. The workflow uses the repository's built-in `GITHUB_TOKEN`; no PAT, deployment key or application secret is required. Do not migrate store privacy URLs until the live Pages site has been independently verified.

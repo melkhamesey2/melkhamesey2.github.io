@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 interface InfoSection { heading: string; body: string[]; items?: string[]; }
-const { lang = "en", current = "", title, description, intro, sections, note } = Astro.props as { lang?: "en" | "ar"; current: string; title: string; description: string; intro: string; sections: InfoSection[]; note?: string };
+const { lang = "en", current = "", title, description, intro, sections, note, presenceLinks = [] } = Astro.props as { lang?: "en" | "ar"; current: string; title: string; description: string; intro: string; sections: InfoSection[]; note?: string; presenceLinks?: { label: string; url: string }[] };
 const isArabic = lang === "ar";
 ---
 <BaseLayout lang={lang} current={current} title={title} description={description} canonicalPath={isArabic ? `ar/${current}/` : `${current}/`} alternatePath={isArabic ? `${current}/` : `ar/${current}/`}>
   <main id="main-content">
     <section class="page-hero"><div class="shell"><p class="eyebrow">{isArabic ? "GK DEVELOPMENT" : "GK DEVELOPMENT"}</p><h1>{title}</h1><p class="lede">{intro}</p></div></section>
-    <section class="section"><div class="shell prose">{note && <div class="note">{note}</div>}{sections.map((section) => <section><h2>{section.heading}</h2>{section.body.map((paragraph) => <p>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}</section>)}</div></section>
+    <section class="section"><div class="shell prose">{note && <div class="note">{note}</div>}{sections.map((section) => <section><h2>{section.heading}</h2>{section.body.map((paragraph) => <p>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}</section>)}{presenceLinks.length > 0 && <section><h2>{isArabic ? "الحضور العام" : "Public presence"}</h2><nav class="presence-links" aria-label={isArabic ? "الحضور العام" : "Public presence"}>{presenceLinks.map((link) => <a class="link-arrow" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>)}</nav></section>}</div></section>
   </main>
 </BaseLayout>

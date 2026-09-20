@@ -1,5 +1,7 @@
 ---
 import InfoPage from "../../components/InfoPage.astro";
+import site from "../../data/site.json";
 const sections = [{ heading: "هوية تطوير عامة", body: ["GK DEVELOPMENT هوية مستقلة لهندسة المنتجات تشمل البرمجيات والألعاب والأنظمة والمنتجات الرقمية. الاسم أوسع عمدًا من تطبيق واحد أو محرك واحد أو منصة واحدة."] }, { heading: "المنتج يبقى مرتبطًا بالواقع", body: ["الحد العام واضح: نصف ما هو متاح، نربط ما يمكن التحقق منه، ونبقي الشيفرة الخاصة وبيانات الاعتماد والتفاصيل التشغيلية خارج الموقع."] }, { heading: "سطح عام صغير", body: ["صُمم الموقع لينمو عندما يكتسب المنتج إصدارًا عامًا. تبقى الأعمال غير المنشورة أو الداخلية مخفية حتى تتضح حالتها."] }];
+const presenceLinks = [{ label: "GitHub", url: site.github }, { label: "Medium", url: site.medium }, { label: "Reddit", url: site.reddit }, { label: "itch.io", url: site.itch }, { label: "LinkedIn", url: site.linkedin }].filter((link) => Boolean(link.url));
 ---
-<InfoPage lang="ar" current="about" title="عن GK DEVELOPMENT" description="عن GK DEVELOPMENT — هوية مستقلة لهندسة المنتجات." intro="هوية مستقلة لهندسة المنتجات تشمل البرمجيات والألعاب والأنظمة والمنتجات الرقمية." sections={sections} />
+<InfoPage lang="ar" current="about" title="عن GK DEVELOPMENT" description="عن GK DEVELOPMENT — هوية مستقلة لهندسة المنتجات." intro="هوية مستقلة لهندسة المنتجات تشمل البرمجيات والألعاب والأنظمة والمنتجات الرقمية." sections={sections} presenceLinks={presenceLinks} />
