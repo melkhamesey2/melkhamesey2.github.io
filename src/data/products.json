@@ -41,6 +41,23 @@
     "featured": true,
     "sortOrder": 1,
     "seoTitle": "GK SOUND SYSTEM — Local-first Windows media player",
-    "seoDescription": "Explore GK SOUND SYSTEM, a local-first Windows media player with 20-band EQ, DSP controls, gapless playback and broad media format support."
+    "seoDescription": "Explore GK SOUND SYSTEM, a local-first Windows media player with 20-band EQ, DSP controls, gapless playback and broad media format support.",
+    "locales": {
+      "ar": {
+        "shortDescription": "مشغل وسائط محلي لنظام Windows مع تحكم عميق في DSP وتجربة تشغيل مركزة.",
+        "fullDescription": "GK SOUND SYSTEM مشغل وسائط لنظام Windows صُمم حول التشغيل المحلي والتحكم العملي في الصوت وتجربة خاصة افتراضيًا. يجمع ميزات المكتبة اليومية مع معادل صوتي من 20 نطاقًا وأدوات DSP لمن يريد تحكمًا أكبر دون نقل وسائطه إلى خدمة سحابية.",
+        "category": "برمجيات وسائط",
+        "features": [
+          "مشغل وسائط لنظام Windows يعمل محليًا ودون اتصال",
+          "معادل صوتي من 20 نطاقًا وأدوات DSP تشمل bass وtreble وتوسيع stereo وclarity وAGC وreverb",
+          "تشغيل gapless حقيقي، وقوائم تشغيل، ومفضلات، وكلمات الأغاني، وMini Player، ووضع Theater/full-screen",
+          "تشغيل MP3 وFLAC وWAV وAAC/M4A وOGG وOpus وWMA وAIFF وMP4",
+          "تشغيل الفيديو عبر تجربة DSP نفسها",
+          "دعم WASAPI و22 لغة للواجهة"
+        ],
+        "seoTitle": "GK SOUND SYSTEM — مشغل وسائط محلي لنظام Windows",
+        "seoDescription": "استكشف GK SOUND SYSTEM، مشغل وسائط محلي لنظام Windows مع معادل صوتي من 20 نطاقًا وتحكم DSP وتشغيل gapless ودعم واسع للصيغ."
+      }
+    }
   }
 ]

@@ -38,4 +38,14 @@ export interface Product {
   sortOrder: number;
   seoTitle: string;
   seoDescription: string;
+  locales?: {
+    ar?: {
+      shortDescription: string;
+      fullDescription: string;
+      category: string;
+      features: string[];
+      seoTitle: string;
+      seoDescription: string;
+    };
+  };
 }

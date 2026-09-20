@@ -3,11 +3,13 @@ import type { Product } from "../data/types";
 const { product, lang = "en" } = Astro.props as { product: Product; lang?: "en" | "ar" };
 const base = import.meta.env.BASE_URL;
 const isArabic = lang === "ar";
-const description = isArabic ? "مشغل وسائط محلي لنظام Windows مع تحكم DSP عميق وتجربة تشغيل مركزة." : product.shortDescription;
+const locale = isArabic ? product.locales?.ar : undefined;
+const description = locale?.shortDescription ?? product.shortDescription;
+const category = locale?.category ?? product.category;
 ---
 <article class="product-card">
   <div class="product-card-top">
-    <div><p class="card-kicker">{product.category}</p><h3>{product.name}</h3></div>
+    <div><p class="card-kicker">{category}</p><h3>{product.name}</h3></div>
     <span class="status-line" aria-label={isArabic ? "منتج منشور" : "Released product"}><span class="status-dot" aria-hidden="true"></span>{isArabic ? "منشور" : "Released"}</span>
   </div>
   <p>{description}</p>
